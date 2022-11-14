@@ -84,6 +84,16 @@ export const ShortcutService: ShortcutServiceInterface = {
     if (!user) throw "user is required.";
     const userId = user.id;
 
+    const shortcuts: Shortcut[] = await Shortcut.findAll({
+      raw: true,
+      where: {
+        userId,
+        shortlink: data.shortlink,
+      },
+    });
+    if (shortcuts.length && shortcuts[0]["id"] != id)
+      throw "sorry, shortlink should be unique.";
+
     await Shortcut.update(data, {
       where: { id },
     });
