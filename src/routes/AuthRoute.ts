@@ -1,7 +1,8 @@
 import express, { query, Request, Response } from "express";
 import { Auth } from "../middlewares/auth";
 import { User } from "../models/User";
-import { AuthService, LoginInterface } from "../services/AuthService";
+import { AuthService } from "../services/AuthService";
+import { LoginInterface } from "../types/AuthType";
 import { ErrorResponse, SuccessResponse } from "../utils/ApiResponse";
 
 const AuthRoute = express.Router();

@@ -1,21 +1,10 @@
 import { compare, genSalt, hash } from "bcrypt";
 import { User } from "../models/User";
 import { UserToken } from "../models/UserToken";
+import { AuthServiceInterface, LoginInterface } from "../types/AuthType";
 import { JwtEncode } from "../utils/JwtUtils";
 
-export type AuthServiceInterface = {
-  register(email: string, password: string, name: string): Promise<User>;
-  encryptPassword(password: string): Promise<string>;
-  login(email: string, password: string): Promise<LoginInterface>;
-  logout(user: User): Promise<void>;
-};
-
-export type LoginInterface = {
-  user: User;
-  userToken: UserToken;
-};
-
-export const AuthService = {
+export const AuthService: AuthServiceInterface = {
   async register(email: string, password: string, name: string): Promise<User> {
     if (!email) throw "email is required.";
     if (!password) throw "password is required.";

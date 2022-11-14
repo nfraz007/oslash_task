@@ -15,10 +15,10 @@ export const Auth = async (req: Request, res: Response, next: NextFunction) => {
     const decoded: any = JwtDecode(token);
     if (!decoded.id) throw new Error();
 
-    const user: User | null = await User.findByPk(decoded.id);
+    const user: User | null = await User.findByPk(decoded.id, { raw: true });
     if (!user) throw new Error();
 
-    req.user = user?.dataValues;
+    req.user = user;
 
     next();
   } catch (err) {

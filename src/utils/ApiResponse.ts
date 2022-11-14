@@ -38,3 +38,13 @@ export const UnauthenticateResponse: any = (response: Response) => {
   };
   return response.status(StatusCodes.BAD_REQUEST).json(result);
 };
+
+export const NotFoundResponse: any = (response: Response) => {
+  const message: string = "data not found.";
+  const result: ResponseInterface = {
+    status: StatusCodes.NOT_FOUND,
+    message,
+    data: {},
+  };
+  return response.status(StatusCodes.NOT_FOUND).json(result);
+};
