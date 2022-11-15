@@ -1,6 +1,7 @@
 # OSLASH Task
 
 Please follow the link for the problem statement
+
 https://getoslash.notion.site/OSlash-Backend-Engineering-Assignment-OSlash-Clone-6a72b110f7c24b8f928138a9a8ed0ee5
 
 # Techstack
@@ -127,3 +128,20 @@ npm run test
 ```
 
 ![test coverage](snapshots/jest_test_report.png)
+
+# Load Test and Benchmark
+
+I am using `artillery` for load test, to use that, please install this globally
+
+```sh
+npm install --global artillery
+artillery --version
+```
+
+you can find load test script in root folder `script.yml`.
+
+```sh
+artillery run script.yml
+```
+
+![load test](snapshots/load_test.png)
