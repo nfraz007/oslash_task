@@ -1,6 +1,6 @@
 # OSLASH Task
 
-Please follow the link for problem statement
+Please follow the link for the problem statement
 https://getoslash.notion.site/OSlash-Backend-Engineering-Assignment-OSlash-Clone-6a72b110f7c24b8f928138a9a8ed0ee5
 
 # Techstack
@@ -20,7 +20,7 @@ https://getoslash.notion.site/OSlash-Backend-Engineering-Assignment-OSlash-Clone
 
 # API Design
 
-I have used Rest API with json output which can be read by any client.
+I have used Rest API with JSON output which can be read by any client.
 
 ### Success Response
 
@@ -37,7 +37,7 @@ I have used Rest API with json output which can be read by any client.
 ```json
 {
   "status": 400,
-  "message": "a error message",
+  "message": "an error message",
   "data": {}
 }
 ```
@@ -64,41 +64,41 @@ I have used Rest API with json output which can be read by any client.
 
 # Authentication
 
-JWT (json web token) is a perfect way to create a new api token with some additional payload and expiry time.
-when a user is success fully login then I am generating a token and storing in `user_tokens` table.
+JWT (JSON web token) is a perfect way to create a new API token with some additional payload and expiry time.
+when a user is successfully login then I am generating a token and storing in `user_tokens` table.
 
 > A user can have multiple tokens
 
 # Database
 
-I have choosen mysql for this project. Mysql is a great database which has relational capabilities.
+I have chosen MySQL for this project. Mysql is a great database that has relational capabilities.
 
-- we can store millions of record in table.
-- for speed up queries, we can add indexes.
+- we can store millions of records in the table.
+- for speeding up queries, we can add indexes.
 - we can even join the table if we need.
-- if size of database is increasing then we can use database cluster as well.
+- if the size of the database is increasing then we can use a database cluster as well.
 
 # Table design
 
-we can definatly scale this structure but after a certain point. mysql search is not an efficiant way to search the record. we can use elastic search or algolia for this which performance is far better than mysql
+we can definitely scale this structure but after a certain point. MySQL search is not an efficient way to search the record. we can use elastic search or algolia for this which performance is far better than MySQL
 
 # Postman
 
-To test this api, you can use postman client. I have also added postman collection in the root folder
+To test this API, you can use the postman client. I have also added the postman collection to the root folder
 
 # Installation
 
 ```sh
-# pull code from github
+# pull code from GitHub
 git clone https://github.com/nfraz007/oslash_task.git
 cd oslash_task
 
 # run dependencies installation
 npm install
 
-# make sure you are running mysql in your local
+# make sure you are running MySQL in your local
 # create database oslash_task
-# put the credential in .env file
+# put the credential in the .env file
 # start the project
 npm run start
 ```
@@ -119,7 +119,7 @@ Shortcut list
 
 # Unit Testing and Coverage
 
-I am also added unit test and test coverage for this project.
+I have also added unit tests and test coverage for this project.
 to run this please run this command
 
 ```sh
