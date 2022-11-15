@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "54b08da5-831b-4ce7-baf4-028397298b4b",
+		"name": "oslash_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5906365"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/auth/register?email=nfraz007@gmail.com&password=123456&name=Nazish Fraz",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nfraz007@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "name",
+									"value": "Nazish Fraz"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Success Test\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Successfully Login.\");",
+									"",
+									"    var resp = pm.response.json();",
+									"    pm.globals.set(\"token\", resp.data.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/auth/login?email=nfraz007@gmail.com&password=123456",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "nfraz007@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "shortlink",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/shortcut",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"shortcut"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "createdAt",
+									"description": "shortlink, description, createdAt",
+									"disabled": true
+								},
+								{
+									"key": "sortType",
+									"value": "desc",
+									"description": "asc, desc",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "search by shortlink, description, tags",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/shortcut?shortlink=portfolio3&url=http://nfraz.co.in&description=my portfolio website&tags=portfolio,website,resume",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"shortcut"
+							],
+							"query": [
+								{
+									"key": "shortlink",
+									"value": "portfolio3"
+								},
+								{
+									"key": "url",
+									"value": "http://nfraz.co.in"
+								},
+								{
+									"key": "description",
+									"value": "my portfolio website"
+								},
+								{
+									"key": "tags",
+									"value": "portfolio,website,resume"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/shortcut/3?shortlink=portfolio4&url=http://nfraz.co.in&description=my portfolio website updated&tags=portfolio,website,resume, updates",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"shortcut",
+								"3"
+							],
+							"query": [
+								{
+									"key": "shortlink",
+									"value": "portfolio4"
+								},
+								{
+									"key": "url",
+									"value": "http://nfraz.co.in"
+								},
+								{
+									"key": "description",
+									"value": "my portfolio website updated"
+								},
+								{
+									"key": "tags",
+									"value": "portfolio,website,resume, updates"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/shortcut/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"shortcut",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		}
+	]
+}
