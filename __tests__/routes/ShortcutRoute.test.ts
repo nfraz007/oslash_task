@@ -17,9 +17,10 @@ describe("ShortcutRoutes list", () => {
   });
   test("shortcut get valid", async () => {
     await connection.sync();
-
     const { token } = await GetLoginUser();
+
     const res = await request(app).get("/shortcut").set("Authorization", token);
+
     expect(res.body.status).toBe(200);
     expect(res.body.message).toBe("Successfully get the data.");
   });
