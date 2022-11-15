@@ -7,8 +7,16 @@ import { JwtEncode } from "../utils/JwtUtils";
 export const AuthService: AuthServiceInterface = {
   async register(email: string, password: string, name: string): Promise<User> {
     if (!email) throw "email is required.";
+    if (
+      !email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    )
+      throw "email is invalid.";
     if (!password) throw "password is required.";
-    if (!name) throw "name is required";
+    if (!name) throw "name is required.";
 
     // check email exist
     const users: User[] = await User.findAll({
@@ -32,6 +40,14 @@ export const AuthService: AuthServiceInterface = {
   },
   async login(email: string, password: string): Promise<LoginInterface> {
     if (!email) throw "email is required.";
+    if (
+      !email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    )
+      throw "email is invalid.";
     if (!password) throw "password is required.";
 
     // check email exist

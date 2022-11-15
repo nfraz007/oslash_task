@@ -18,7 +18,7 @@ ShortcutRoute.get("/", Auth, async (req: Request, res: Response) => {
       sortType,
       search,
     });
-    return SuccessResponse(res, "Successfully created.", { shortcuts });
+    return SuccessResponse(res, "Successfully get the data.", { shortcuts });
   } catch (e: any) {
     return ErrorResponse(res, e);
   }

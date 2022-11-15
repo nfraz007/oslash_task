@@ -18,7 +18,7 @@ export const ShortcutService: ShortcutServiceInterface = {
     if (!user) throw "user is required.";
     if (!shortlink) throw "shortlink is required.";
     if (!url) throw "url is required.";
-    if (!description) throw "description is required";
+    if (!description) throw "description is required.";
 
     // check shortlinks for unique
     const userId = user.id;
